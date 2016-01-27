@@ -49,6 +49,10 @@ void regular_grueso(int8_t dif);
 
 void regular_fino(int8_t Tdeseada, int8_t dif);
 
+char obtener_modo(int8_t Tdeseada);
+
+void aplicar_modo(char modo);
+
 char establecer_modo(int8_t Tdeseada);
 
 void modo_calor(void);

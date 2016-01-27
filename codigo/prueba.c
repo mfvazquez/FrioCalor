@@ -179,7 +179,9 @@ void loop_transmit(void){
 
 void loop_peltier(int8_t Tdeseada){
 	int8_t T, dif;
+	char modo = obtener_modo(Tdeseada);
 	PWM_fino = 50;
+	if (modo == Modo_Calor) PWM_fino = 15;
 	
 	while (1){
 		T = obtener_Tpeltier();
@@ -221,10 +223,10 @@ void regular_fino(int8_t Tdeseada, int8_t dif){
 		}
 	}else if(modo == Modo_Calor){
 		if(dif > 0){
-			if (PWM_fino >= 25) PWM_fino -= 5;
-			else PWM_fino = 20;
+			if (PWM_fino >= 5) PWM_fino -= 2;
+			else PWM_fino = 0;
 		}else if(dif < 0){
-			PWM_fino += 5;
+			PWM_fino += 2;
 			if (PWM_fino > 50) PWM_fino = 50; 
 		}
 
@@ -271,18 +273,28 @@ void regular_fino(int8_t Tdeseada, int8_t dif){
 		
 }*/
 
-char establecer_modo(int8_t Tdeseada){
+char obtener_modo(int8_t Tdeseada){
 	if (Tdeseada == Tinicial){
 		PWM_off();
 		return Modo_Apagado;
 	}
 	PWM_set(0);
 	if (Tdeseada < Tinicial){
-		modo_frio();
 		return Modo_Frio;
 	}
-	modo_calor();
 	return Modo_Calor;
+}
+
+void aplicar_modo(char modo){
+	if (modo == Modo_Calor) modo_calor();
+	else if (modo == Modo_Frio) modo_frio();
+}
+
+char establecer_modo(int8_t Tdeseada){
+	char modo = obtener_modo(Tdeseada);
+	if (modo == Modo_Calor) modo_calor();
+	else if (modo == Modo_Frio) modo_frio();
+	return modo;
 }
 
 void modo_calor(void){
