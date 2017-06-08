@@ -1,0 +1,39 @@
+GAS LISTING /tmp/ccX2BDXE.s 			page 1
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 prueba.c
+     /tmp/ccX2BDXE.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccX2BDXE.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccX2BDXE.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccX2BDXE.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccX2BDXE.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccX2BDXE.s:114    .text:0000000000000000 USART_Init
+     /tmp/ccX2BDXE.s:144    .text:000000000000000e transmit
+     /tmp/ccX2BDXE.s:169    .text:0000000000000016 receive
+     /tmp/ccX2BDXE.s:196    .text:000000000000001e ADC_Init
+     /tmp/ccX2BDXE.s:220    .text:0000000000000026 obtener_Tamb
+     /tmp/ccX2BDXE.s:2666   .progmem.data:0000000000000043 VOLT
+     /tmp/ccX2BDXE.s:2596   .progmem.data:0000000000000000 TEMP
+     /tmp/ccX2BDXE.s:370    .text:0000000000000088 obtener_Tpeltier
+     /tmp/ccX2BDXE.s:520    .text:00000000000000ea PWM_Init
+     /tmp/ccX2BDXE.s:541    .text:00000000000000f0 PWM_on
+     /tmp/ccX2BDXE.s:561    .text:00000000000000f4 PWM_off
+     /tmp/ccX2BDXE.s:597    .text:00000000000000fe PWM_set
+     /tmp/ccX2BDXE.s:626    .text.startup:0000000000000000 main
+                            *COM*:0000000000000001 Tinicial
+     /tmp/ccX2BDXE.s:748    .text:0000000000000106 loop_transmit
+     /tmp/ccX2BDXE.s:969    .text:0000000000000190 regular_grueso
+     /tmp/ccX2BDXE.s:1088   .text:00000000000001ce regular_fino
+     /tmp/ccX2BDXE.s:2738   .bss:0000000000000000 PWM_fino
+     /tmp/ccX2BDXE.s:1365   .text:00000000000002aa obtener_modo
+     /tmp/ccX2BDXE.s:1445   .text:00000000000002d4 loop_peltier
+     /tmp/ccX2BDXE.s:1854   .text:00000000000003d8 __vector_11
+     /tmp/ccX2BDXE.s:2218   .text:00000000000004b2 aplicar_modo
+     /tmp/ccX2BDXE.s:2282   .text:00000000000004dc establecer_modo
+     /tmp/ccX2BDXE.s:2409   .text:0000000000000522 modo_calor
+     /tmp/ccX2BDXE.s:2439   .text:0000000000000532 modo_frio
+     /tmp/ccX2BDXE.s:2470   .text:0000000000000542 traducir_temp
+
+UNDEFINED SYMBOLS
+__do_clear_bss

@@ -48,12 +48,32 @@ class EnviarDatos(cmd.Cmd):
 			serial_port.write(chr(pwm))
 			serial_port.close()
 			
-	def apagar(self, dato): 
+	def do_apagar(self, dato):
 		""" Modo de uso: apagar
 		Anula la circulacion de corriente en la celda peltier """
 		serial_port = serial.Serial("/dev/ttyUSB0",38400)
 		serial_port.write('X')
 		serial_port.close()
+
+	def do_pulso_frio(self, dato):
+		pwm = int(dato)
+		if (pwm < 0 or pwm > 255):
+			print "pwm invalido. Son validos los valores entre 0 y 255."
+		else:
+			serial_port = serial.Serial("/dev/ttyUSB0",38400)
+			serial_port.write('P')
+			serial_port.write(chr(pwm))
+			serial_port.close()
+
+	def do_pulso_calor(self, dato):
+		pwm = int(dato)
+		if (pwm < 0 or pwm > 255):
+			print "pwm invalido. Son validos los valores entre 0 y 255."
+		else:
+			serial_port = serial.Serial("/dev/ttyUSB0",38400)
+			serial_port.write('Q')
+			serial_port.write(chr(pwm))
+			serial_port.close()
 
 
 if __name__ == '__main__':

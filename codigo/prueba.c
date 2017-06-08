@@ -12,6 +12,8 @@
 #define Modo_Frio 	'F'
 #define Modo_Calor 	'C'
 #define Modo_Apagado	'X'
+#define Modo_Pulso_Frio 'P'
+#define Modo_Pulso_Calor 'Q'
 #define Dato_Char	'D'
 #define PWM_Max 110
 #define PWM_Calor 70
@@ -85,7 +87,23 @@ ISR(USART_RXC_vect){
 			loop_transmit();
 		case(Modo_Apagado):
 			PWM_off();
-			loop_transmit();			
+			loop_transmit();
+		case(Modo_Pulso_Frio):
+			dato = receive();
+			sei();
+			PWM_set(dato);
+			modo_frio();
+			_delay_ms(1000);
+			PWM_off();
+			loop_transmit();
+		case(Modo_Pulso_Calor):
+			dato = receive();
+			sei();
+			PWM_set(dato);
+			modo_calor();
+			_delay_ms(1000);
+			PWM_off();
+			loop_transmit();
 		default:
 			while(1);
 	}
@@ -131,6 +149,7 @@ void PWM_on(void){
 
 void PWM_off(void){
 	DDRB &= ~(1 << 3);
+	PWM_set(0);
 }
 
 void PWM_set(uint8_t pwm){
